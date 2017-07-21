@@ -2,6 +2,10 @@
 
 # 変更履歴
 
+## 1.1.0 Jul. 22, 2017
+
+ローカルライブラリ使用時の切り替えを容易にできるように、オフライン・オプション`chkMarkdownOffline`を追加。
+
 ## Jul. 21, 2017
 
 便宜上、プラグインtiddlerを個別ファイルに作成して履歴管理できるように、[icm7216.github.io/MyTiddlyWiki/](https://icm7216.github.io/MyTiddlyWiki/) からプラグインの個別リポジトリを作成。

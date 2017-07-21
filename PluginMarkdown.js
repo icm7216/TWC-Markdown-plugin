@@ -2,8 +2,8 @@
 |''Name''|PluginMarkdown|
 |''Description''|Allows to use Markdown syntax and syntax highlight in a tiddler|
 |''Author''|icm7216 aka babooshka|
-|''Version''|1.0.10|
-|''date''|Jul. 21, 2017|
+|''Version''|1.1.0|
+|''date''|Jul. 22, 2017|
 |''Requires''|[[chjj/marked.js|https://github.com/chjj/marked]] <br> [[google/code-prettify.js|https://github.com/google/code-prettify]]|
 |''Source''|[[icm7216/TWC-Markdown-plugin|https://github.com/icm7216/TWC-Markdown-plugin]]|
 |''License''|[[Creative Commons Attribution-ShareAlike 2.5 License|http://creativecommons.org/licenses/by-sa/2.5/]]|
@@ -153,13 +153,16 @@ Open External link in a new wndow
 
 </md>
 
+!Tips!
 
-!When using local installation.
-If you want to offline use. You need to install "marked.js" and "prettify.js", "prettify.css" in your PC.
+!!Offline use in the local library
+
+When you want to use offline. Require to install "marked.js" and "prettify.js", "prettify.css" on your PC.
+
 
 !!How to local installation
 
-setp1.
+!!!setp1.
 Download and install marked and google-code-prettify zip files. and then extract files using any extract tool. For example, [[7-Zip|http://www.7-zip.org/]], [[Lhaplus|http://www.forest.impress.co.jp/library/software/lhaplus/]], etc.
 
 Download marked.js from here
@@ -175,37 +178,26 @@ like this
 TiddlyWiki/
     +--- memo.html           <== your TiddlyWiki file
     +--- marked-master/
-    |        +--- lib/
-    |               +---marked.js
+    |        +--- lib/       
+    |               +---marked.js  <== "marked-master/lib/marked.js"
     +--- google-code-prettify/
-             +--- prettify.js
-             +--- prettify.css
+             +--- prettify.js      <== "google-code-prettify/prettify.js"
+             +--- prettify.css     <== "google-code-prettify/prettify.css"
 }}}
 
 
-step2.
-Edit the code to specify the local file directory.
-* Add comment mark {{{"//"}}} within an "online use" section.
-* Remove comment mark {{{"//"}}} within an "offline use" section.
-Fix this part of the code. like this
-{{{
-// ## Online use ##
-//scriptMarked : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js",
-//scriptPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js",
-//cssPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css",
-
-// ## Offline use ##
-scriptMarked : "marked-master/lib/marked.js",
-scriptPrettify : "google-code-prettify/prettify.js",
-cssPrettify : "google-code-prettify/prettify.css",
-}}}
+!!!step2.
+Enable the Pulgin Options ''chkMarkdownOffline'' checkbox below.
 
 
-step3.
+!!!step3.
 Save the TiddlyWiki. Reload the TiddlyWiki browser window.
 
 
+!Options
 
+Offline use in the local library if enabled.
+<<option chkMarkdownOffline>> ''chkMarkdownOffline''
 
 
 !Code
@@ -214,6 +206,10 @@ Save the TiddlyWiki. Reload the TiddlyWiki browser window.
 if(!version.extensions.PluginMarkdown) {
     version.extensions.PluginMarkdown = { installed: true };
 
+    if (typeof config.options.chkMarkdownOffline === "undefined") {
+        config.options.chkMarkdownOffline = false;    
+    }
+
     config.extensions.PluginMarkdown = {
 
         // ## plugin loading check ##
@@ -221,14 +217,14 @@ if(!version.extensions.PluginMarkdown) {
         ErrorCountLimit : 30,
 
         // ## Online use ##
-        scriptMarked : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js",
-        scriptPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js",
-        cssPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css",
+        CDN_Marked : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js",
+        CDN_Prettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js",
+        CDN_cssPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css",
 
         // ## Offline use ##
-        // scriptMarked : "marked-master/lib/marked.js",
-        // scriptPrettify : "google-code-prettify/prettify.js",
-        // cssPrettify : "google-code-prettify/prettify.css",
+        Local_Marked : "marked-master/lib/marked.js",
+        Local_Prettify : "google-code-prettify/prettify.js",
+        Local_cssPrettify : "google-code-prettify/prettify.css",
 
         // ## custom StyleSheet ##
         MyStyleSheet : { text:
@@ -387,12 +383,10 @@ if(!version.extensions.PluginMarkdown) {
                 if (!jQuery(anchor_node).hasClass('tiddlyLink') && !jQuery(anchor_node).hasClass('externalLink')) {
                     parent_node = anchor_node.parentNode;
                     anchor_text = anchor_node.outerHTML;
-//console.log(n + ' => ' + anchor_text)
             
                     while (match = regex.exec(anchor_text)) {
                         link = match[1];
                         text = match[2];
-//console.log(n + ' => ' + 'link = ' + link);
 
                         e = (config.formatterHelpers.isExternalLink(link)) ?
                             config.extensions.PluginMarkdown.createExternalLinkNewWindow(parent_node, link) :
@@ -406,21 +400,24 @@ if(!version.extensions.PluginMarkdown) {
 
         install: function() {
             var _PluginMarkdown = config.extensions.PluginMarkdown;
+            var scriptMarked = config.options.chkMarkdownOffline ? _PluginMarkdown.Local_Marked : _PluginMarkdown.CDN_Marked;
+            var scriptPrettify = config.options.chkMarkdownOffline ? _PluginMarkdown.Local_Prettify : _PluginMarkdown.CDN_Prettify;
+            var cssPrettify = config.options.chkMarkdownOffline ? _PluginMarkdown.Local_cssPrettify : _PluginMarkdown.CDN_cssPrettify;
 
             // ## load Prettify script and css ##
             var elecss = document.createElement( 'link' );
             elecss.type = 'text/css';
             elecss.rel = 'stylesheet';
-            elecss.href = _PluginMarkdown.cssPrettify;
+            elecss.href = cssPrettify;
             document.getElementsByTagName( 'head' )[0].appendChild( elecss );
 
-            _PluginMarkdown.loadScript( _PluginMarkdown.scriptPrettify );
+            _PluginMarkdown.loadScript( scriptPrettify );
 
             // ## set custom css ##
             setStylesheet( _PluginMarkdown.MyStyleSheet.text, 'PluginMarkdown' );
 
             // ## load marked and Options settings ##
-            _PluginMarkdown.loadScript( _PluginMarkdown.scriptMarked, function() {
+            _PluginMarkdown.loadScript( scriptMarked, function() {
                 marked.setOptions({
                     gfm: true,
                     tables: true,
@@ -466,11 +463,10 @@ if(!version.extensions.PluginMarkdown) {
                     config.extensions.PluginMarkdown.ErrorCount += 1;
                     if (config.extensions.PluginMarkdown.ErrorCount < config.extensions.PluginMarkdown.ErrorCountLimit) {
                         setTimeout(function() {
-// console.log("## catch start ## marked refreshTiddler " + w.tiddler.title);
                             story.refreshTiddler(w.tiddler.title,null,true);
                         }, 500);
                     }else{
-                        t = "marked.js are not available.  Please check the path of marked.js"
+                        t = "*** ERROR *** marked.js are not available.  Please check the path of marked.js"
                     }
                 }
 
@@ -484,11 +480,9 @@ if(!version.extensions.PluginMarkdown) {
                 addClass( '.MarkdownBody pre code', 'prettyprint linenums' );
                 w.nextMatch = this.lookaheadRegExp.lastIndex;                          
             }
-
-// console.log("# marked formatter end # : ErrorCount = " + config.extensions.PluginMarkdown.ErrorCount);
-
         }
     });
+
     config.extensions.PluginMarkdown.install();
 }
 //}}}

@@ -143,21 +143,13 @@ like this
 
 ### step2.
 
-Edit the code to specify the local file directory.
+Enable the Pulgin Options ''chkMarkdownOffline'' checkbox.
 
-*   Add comment mark `"//"` within an "online use" section.
-*   Remove comment mark `"//"` within an "offline use" section.
-Fix this part of the code. like this
-``` javascript
-// ## Online use ##
-//scriptMarked : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js",
-//scriptPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js",
-//cssPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css",
+```
+Options
 
-// ## Offline use ##
-scriptMarked : "marked-master/lib/marked.js",
-scriptPrettify : "google-code-prettify/prettify.js",
-cssPrettify : "google-code-prettify/prettify.css",
+Offline use in the local library if enabled.
+[ ] chkMarkdownOffline
 ```
 
 ### step3.
