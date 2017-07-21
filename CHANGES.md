@@ -51,6 +51,6 @@
 ## 1.0.0 Nov. 07, 2013
 
 *   オリジナルの [ShowDown](http://showdown.tiddlyspace.com/) を元に作成。
-*   MarkdownのパーサーをGFMに対応できる [[marked.js|https://github.com/chjj/marked/tree/master/]] へ変更。
-*   シンタックスハイライト [[google-code-prettify|https://github.com/google/code-prettify/tree/master]] を追加。
+*   MarkdownのパーサーをGFMに対応できる [marked.js](https://github.com/chjj/marked/tree/master/) へ変更。
+*   シンタックスハイライト [google-code-prettify](https://github.com/google/code-prettify/tree/master) を追加。
 *   Markdown用のスタイルシートtiddlerを個別に作らずプラグイン内にcssを含めたことで、オンライン使用の場合はプラグインのインストールだけですぐに使えるようになった。
