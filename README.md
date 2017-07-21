@@ -11,9 +11,17 @@
 
 *   This plugin adds a new formatter for `<pre class='prettyprint linenums'>` within the Markdown contents. 
 
+
+
 This plugin are adapted from ShowDown.js (on [TiddlyWikiPlugins/ShowDown.js](https://github.com/tobibeer/TiddlyWikiPlugins/blob/master/plugins/ShowDown.js)
-).   
+).  
 Thanks [tobibeer/TiddlyWikiPlugins](https://github.com/tobibeer/TiddlyWikiPlugins).
+
+Changes from the original
+*   Change Markdown parser from ShowDown to marked.
+*   Added syntax highlighting.
+*   Added stylesheet for Markdown.
+
 
 
 # Installation Plugin
