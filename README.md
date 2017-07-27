@@ -5,10 +5,8 @@
 ## Description 
 
 *   allows to write in the [GFM](https://help.github.com/articles/github-flavored-markdown) notation.
-
 *   allows to [syntax highlighting](https://github.com/google/code-prettify) of source code snippets for 
 `<pre>` code blocks.  
-
 *   This plugin adds a new formatter for `<pre class='prettyprint linenums'>` within the Markdown contents. 
 
 
@@ -23,8 +21,17 @@ Changes from the original
 *   Added stylesheet for Markdown.
 
 
+#### Markdown Plugin and demo, on the icm7216.github.io.
 
-# Installation Plugin
+*   [Markdown Plugin](https://icm7216.github.io/MyTiddlyWiki/#PluginMarkdown)
+*   [GitHub Flavored Markdown](https://icm7216.github.io/MyTiddlyWiki/#%5B%5BGitHub%20Flavored%20Markdown%5D%5D
+)
+*   [Markdown Documentation](https://icm7216.github.io/MyTiddlyWiki/#%5B%5BMarkdown%20Documentation%5D%5D)
+*   [MathJax in Markdown](https://icm7216.github.io/MyTiddlyWiki/#%5B%5BMathJax%20in%20Markdown%5D%5D)
+*   [Tiddly Link in Markdown](https://icm7216.github.io/MyTiddlyWiki/#%5B%5BTiddly%20Link%20in%20Markdown%5D%5D)
+
+
+## Installation Plugin
 
 Create a new tiddler with the following contents.
 
@@ -38,13 +45,14 @@ Create a new tiddler with the following contents.
 To enable the plugin, Save the TWC file and reload it.
 
 
-# Usage
+## Usage
 
 *   [Markdown](http://daringfireball.net/projects/markdown/syntax) contents wrapped in a `<md>...</md>` tag.  
 
 *   These contents are converted into a tiddler text wrapped in a `<html>-</html>` tag.
 
-For example
+### For example
+
 `````` markdown
 <md>
 This is an h1 header
@@ -99,22 +107,23 @@ Open External link in a new wndow
 </md>
 ``````
 
-Displays as:
+### Displays as:
+
 ![markdown_out.png](./img/markdown_out.png "Markdown output")
 
 
 ----
 
 
-# Tips! 
+## Tips! 
 
-## Offline use in the local library
+### Offline use in the local library
 
 When you want to use offline. Require to install "marked.js" and "prettify.js", "prettify.css" on your PC.
 
-## How to local installation
+### How to local installation
 
-### setp1.
+#### setp1.
 
 Download and install `marked` and `google-code-prettify` zip files. and then extract files using any extract tool. For example, [7-Zip](http://www.7-zip.org/), or [Lhaplus](http://www.forest.impress.co.jp/library/software/lhaplus/), etc.
 
@@ -141,10 +150,9 @@ like this
 ```
 
 
-### step2.
+#### step2.
 
 Enable the Pulgin Options ''chkMarkdownOffline'' checkbox.
-
 ```
 Options
 
@@ -152,7 +160,7 @@ Offline use in the local library if enabled.
 [ ] chkMarkdownOffline
 ```
 
-### step3.
+#### step3.
 
 To enable the plugin, Save the TWC file and reload it.
 
@@ -160,6 +168,6 @@ To enable the plugin, Save the TWC file and reload it.
 ----
 
 
-# License
+## License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/2.5/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/">Creative Commons Attribution-ShareAlike 2.5 Generic License</a>.
