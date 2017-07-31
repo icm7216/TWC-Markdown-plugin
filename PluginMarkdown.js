@@ -2,8 +2,8 @@
 |''Name''|PluginMarkdown|
 |''Description''|Allows to use Markdown syntax and syntax highlight in a tiddler|
 |''Author''|icm7216 aka babooshka|
-|''Version''|1.1.0|
-|''date''|Jul. 22, 2017|
+|''Version''|1.2.0|
+|''date''|Aug. 01, 2017|
 |''Requires''|[[chjj/marked.js|https://github.com/chjj/marked]] <br> [[google/code-prettify.js|https://github.com/google/code-prettify]]|
 |''Source''|[[icm7216/TWC-Markdown-plugin|https://github.com/icm7216/TWC-Markdown-plugin]]|
 |''License''|[[Creative Commons Attribution-ShareAlike 2.5 License|http://creativecommons.org/licenses/by-sa/2.5/]]|
