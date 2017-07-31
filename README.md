@@ -48,8 +48,10 @@ To enable the plugin, Save the TWC file and reload it.
 ## Usage
 
 *   [Markdown](http://daringfireball.net/projects/markdown/syntax) contents wrapped in a `<md>...</md>` tag.  
-
 *   These contents are converted into a tiddler text wrapped in a `<html>-</html>` tag.
+
+let's start Markdown, click the "New Markdown" button in the right sidebar.
+
 
 ### For example
 

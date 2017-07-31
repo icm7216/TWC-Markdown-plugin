@@ -210,6 +210,24 @@ if(!version.extensions.PluginMarkdown) {
         config.options.chkMarkdownOffline = false;    
     }
 
+    // ## define newMarkdown macro ##
+    config.macros.newMarkdown = {};
+    merge(config.macros.newMarkdown, {
+        label: "new Markdown",
+        prompt: "Create a new Markdown",
+        title: "New Markdown",
+    text: `<md>\nType the Markdown text for "New Tiddler"\n</md>`,
+        accessKey: ""
+    });
+
+    config.macros.newMarkdown.handler = function(place,macroName,params) {
+        if(!readOnly) {
+        params = [];
+        params[0] = {text: [this.text]};
+        config.macros.newTiddler.createNewTiddlerButton(place, this.title, params, this.label, this.prompt, this.accessKey, "title", false);
+    }
+    };
+
     config.extensions.PluginMarkdown = {
 
         // ## plugin loading check ##
@@ -441,6 +459,27 @@ if(!version.extensions.PluginMarkdown) {
                     }
                 });
             });
+
+            // ## add "new Markdown" button to SideBarOptions ##
+            var title = "SideBarOptions";
+            var backup_title = "SideBarOptions_backup";
+            var sidebar_regex = /(^.*?)(<<newTiddler>>.*?$)/;
+            var md_button = '<<newMarkdown>>';
+            var is_md_button = new RegExp(md_button);
+            var cur_text = store.getTiddlerText(title);
+
+            if(is_md_button.test(cur_text) == false) {
+                // backup SideBarOptions
+                store.createTiddler(backup_title);
+                store.saveTiddler(backup_title, backup_title, cur_text);
+
+                // update SideBarOptions, add "new Markdown" button.
+                var new_text = cur_text.replace(sidebar_regex, `$1${md_button}$2`)
+                store.saveTiddler(title, title, new_text);
+
+            } else {
+                console.log("newMarkdown button already exists in SideBarOptions.");
+            }
         }
     };
 
