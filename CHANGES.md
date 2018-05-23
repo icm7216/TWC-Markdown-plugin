@@ -2,6 +2,10 @@
 
 # 変更履歴
 
+## 1.2.2 MAy 23, 2018
+
+*   Changed stylesheet for the code block. Adapted to marked.js 0.4.0.
+
 ## 1.2.1 Apr. 17, 2018
 
 *   Marked.jsを0.3.19に変更。
