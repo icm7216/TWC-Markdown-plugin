@@ -2,8 +2,8 @@
 |''Name''|PluginMarkdown|
 |''Description''|Allows to use Markdown syntax and syntax highlight in a tiddler|
 |''Author''|icm7216 aka babooshka|
-|''Version''|1.2.1|
-|''date''|Apr. 17, 2018|
+|''Version''|1.2.2|
+|''date''|May 23, 2018|
 |''Requires''|[[chjj/marked.js|https://github.com/chjj/marked]] <br> [[google/code-prettify.js|https://github.com/google/code-prettify]]|
 |''Source''|[[icm7216/TWC-Markdown-plugin|https://github.com/icm7216/TWC-Markdown-plugin]]|
 |''License''|[[Creative Commons Attribution-ShareAlike 2.5 License|http://creativecommons.org/licenses/by-sa/2.5/]]|
@@ -235,7 +235,7 @@ if(!version.extensions.PluginMarkdown) {
         ErrorCountLimit : 30,
 
         // ## Online use ##
-        CDN_Marked : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.19/marked.min.js",
+        CDN_Marked : "https://cdnjs.cloudflare.com/ajax/libs/marked/0.4.0/marked.min.js",
         CDN_Prettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.js",
         CDN_cssPrettify : "https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css",
 
@@ -311,7 +311,7 @@ if(!version.extensions.PluginMarkdown) {
                       +'.viewer .MarkdownBody ol.linenums {\n'
                       +'    background-color: transparent;\n'
                       +'    color: rgb(160, 160, 160);\n'
-                      +'    margin: 5px 0px -10px 0px;\n'
+                      +'    margin: 5px 0px 0px 0px;\n'
                       +'    padding: 0px 0px 0px 40px;\n'
                       +'}\n'
                       +'.viewer .MarkdownBody ol.linenums li {\n'
@@ -351,7 +351,8 @@ if(!version.extensions.PluginMarkdown) {
                       +'    margin-left: -30px;\n'
                       +'}\n'
                       +'.viewer .MarkdownBody code.lang-console ol.linenums {\n'
-                      +'    margin: 5px 0px -15px;\n'
+                      +'    margin: 5px 0px 0px;\n'
+                      +'    padding-bottom: 5px;\n'
                       +'}\n'
                       +'/*}}}*/\n'
         },
