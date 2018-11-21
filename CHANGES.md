@@ -2,6 +2,12 @@
 
 # 変更履歴
 
+## 1.2.4 Nov. 21, 2018
+
+*   Fix a problem with name of TiddlyLink including spaces.
+    *   The new marked.js has been changed to ignore URL that contain spaces characters. marked.js does not accept TiddlyLinks that contain spaces.
+    *   The way to fix this problem is to replace the space with `%20`.
+
 ## 1.2.3 Nov. 13, 2018
 
 *   Update Marked.js, change version to 0.5.1 
